@@ -6,7 +6,7 @@ class Technicians extends Component {
   render() {
     return (
       <div>
-          <h3>Actual Technicians</h3>
+          <h3 style={ActTecStyle}>Actual Technicians</h3>
           {this.props.technicians.map ((technician, index) => (
                 <Technicianitem 
                   key={technician.id} 
@@ -27,4 +27,9 @@ Technicians.propTypes = {
     editTechnician: PropTypes.func.isRequired,
 }
 
+const ActTecStyle = {
+  padding: '1%',
+  textAlign: 'center',
+  borderBottom:'2px solid #232f3e',
+}
 export default Technicians;

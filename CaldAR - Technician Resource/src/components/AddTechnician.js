@@ -73,7 +73,7 @@ export class AddTechnician extends Component {
     render() {
         return (
             <div>
-                <h3>{this.state.id ? "Edit Technician" : "Add new Technician"}</h3>
+                <h3 style={AddTecStyle}>{this.state.id ? "Edit Technician" : "Add new Technician"}</h3>
                 <form onSubmit={this.onSubmit}>
                     <input type="hidden" name="id" value={this.state.id} />
                         <input
@@ -135,7 +135,7 @@ export class AddTechnician extends Component {
                         <input
                             type="submit"
                             value="Submit"
-                            style={inputStyle}
+                            style={submitStyle}
                         />
                 </form>
             </div>
@@ -153,9 +153,19 @@ AddTechnician.propTypes = {
 const inputStyle = {
     padding: "10px",
     width: "50%",
-    margin: "0% 25%",
+    margin: "0.5% 25%",
     borderRadius: "5px",
 };
-
-
+const submitStyle = {
+    background: "#232f3e",
+    color: "#fff",
+    padding: "10px",
+    width: "25%",
+    margin: "0.5% 37.5%",
+    borderRadius: "5px",
+}
+const AddTecStyle = {
+    padding: '1%',
+    textAlign: 'center',
+}
 export default AddTechnician
