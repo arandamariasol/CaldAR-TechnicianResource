@@ -10,6 +10,7 @@ class App extends Component {
 
   state = {
     technicians: [],
+    technicianEdit: null,
   };
 
   componentDidMount() {
@@ -17,14 +18,40 @@ class App extends Component {
     this.setState({ technicians: dataTechnicians });
   }
 
-  /*//Toggle Complete
-  markComplete = (id) => {
-  this.setState({ technicians: this.state.technicians.map(technician => {
-    if(technician.id === id) {
-      technician.completed = !technician.completed
-    }
-    return technician;
-  }) });*/
+  // Edit Customer
+  editTechnician = (technicianed) => {
+    this.setState({
+    technicianEdit: technicianed,
+    });
+    window.scrollTo(0, 0);
+  };
+
+  // Update Technician
+  updateTechnician = (
+    id,
+    first_name,
+    last_name,
+    email,
+    typeIds,
+    skillsId,
+    hour_rate,
+    daily_capacity,
+  ) => {
+    this.setState({
+      technicians: this.state.technicians.map((technician) => {
+        if (technician.id === id) {
+          technician.first_name = first_name;
+          technician.last_name = last_name;
+          technician.email = email;
+          technician.typeIds = typeIds;
+          technician.skillsId = skillsId;
+          technician.hour_rate = hour_rate;
+          technician.daily_capacity = daily_capacity;
+        }
+        return technician;
+      }),
+    });
+  };
 
   // Delete Technician
   delTechnician = (id) => {
@@ -54,13 +81,15 @@ class App extends Component {
             <Header />
             <Route exact path="/" render={props => (
               <React.Fragment>
-                <AddTechnician 
-                  addTechnician={this.addTechnician} 
-                />
-                <h3>Actual Technicians</h3>
                 <Technicians 
                   technicians={this.state.technicians}
                   delTechnician={this.delTechnician}
+                  editTechnician={this.editTechnician}
+                />
+                <AddTechnician 
+                  addTechnician={this.addTechnician} 
+                  updateTechnician={this.updateTechnician}
+                  technicianEdit={this.state.technicianEdit}
                 />
               </React.Fragment>
             )} />

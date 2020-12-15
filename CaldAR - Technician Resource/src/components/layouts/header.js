@@ -3,9 +3,7 @@ import React from 'react';
 function Header () {
     return (
         <header style={headerStyle}>
-            <h1>Technicians
-                
-            </h1>
+            <h1>Technicians</h1>
         </header>
     );
 };
@@ -13,7 +11,8 @@ function Header () {
 const headerStyle = {
     background: '#fc6225',
     color: '#fff',
-    textAlign: 'center'
+    textAlign: 'center',
+    borderBottom: '5px solid #232f3e',
 };
 
 export default Header;

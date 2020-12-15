@@ -16,9 +16,9 @@ export class Technicianitem extends Component {
         return (
             <div style={this.getStyle()}>
                 <p>
-                    {id} - First Name: { first_name } - Last Name: { last_name } - Email: { email } - SkillsId {skillsId} - Hour Rate: {hour_rate } - Daily Capacity: { daily_capacity }
+                    {id} - First Name: { first_name } - Last Name: { last_name } - Email: { email } - Type Ids { typeIds } - Skills Id {skillsId} - Hour Rate: {hour_rate } - Daily Capacity: { daily_capacity }
                     <button onClick={this.props.delTechnician.bind(this, id)} style={btnStyle}>x</button>
-                    <button style={btnStyle}>Edit</button>
+                    <button onClick={this.props.editTechnician.bind(this, this.props.technician)} style={btnStyle}>Edit</button>
                 </p>
             </div>
         )
@@ -28,7 +28,8 @@ export class Technicianitem extends Component {
 // Prop types
 Technicianitem.propTypes = {
     technician: PropTypes.object.isRequired,
-    delTechnician: PropTypes.func.isRequired
+    delTechnician: PropTypes.func.isRequired,
+    editTechnician: PropTypes.func.isRequired,
 }
 
 const btnStyle = {
