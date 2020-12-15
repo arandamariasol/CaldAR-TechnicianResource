@@ -3,34 +3,98 @@ import PropTypes from 'prop-types';
 
 export class AddTechnician extends Component {
     state = {
-        title: ''
-    }
-    onSubmit = (e) => {
+        first_name: "",
+        last_name: "",
+        email: "",
+        skillsId: "",
+        hour_rate: "",
+        daily_capacity: "",
+      };
+
+
+      onSubmit = (e) => {
         e.preventDefault();
-        this.props.addTechnician(this.state.title);
-        this.setState({title:''})
+        this.props.addTechnician(
+            this.state.first_name,
+            this.state.last_name,
+            this.state.email,
+            this.state.skillsId,
+            this.state.hour_rate,
+            this.state.daily_capacity,
+        );
+        this.setState({
+            first_name:"",
+            last_name:"",
+            email:"",
+            skillsId:"",
+            hour_rate: "",
+            daily_capacity: "",
+        })
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value});
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} style={{ display: 'flex'}}>
-                <input 
-                type="text" 
-                name="title" 
-                placeholder="Add Technician..."
-                style={{flex: '10', padding: '5px'}}
-                value={this.state.title}
-                onChange={this.onChange}
-                />
-                <input
-                type="submit"
-                value="Submit"
-                className="btn"
-                style={{flex: '1', background: '#232f3e'}}
-                />
-            </form>
+            <>
+                <h3>Add new Technician</h3>
+
+                <form onSubmit={this.onSubmit}>
+                    <input
+                        type="text"
+                        name="first_name"
+                        style={inputStyle}
+                        placeholder="First Name..."
+                        value={this.state.first_name}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="text"
+                        name="last_name"
+                        style={inputStyle}
+                        placeholder="Last Name..."
+                        value={this.state.last_name}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="text"
+                        name="email"
+                        style={inputStyle}
+                        placeholder="Email..."
+                        value={this.state.email}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="text"
+                        name="skillsId"
+                        style={inputStyle}
+                        placeholder="Skills Id..."
+                        value={this.state.skillsId}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="text"
+                        name="hour_rate"
+                        style={inputStyle}
+                        placeholder="Hour rate..."
+                        value={this.state.hour_rate}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="text"
+                        name="daily_capacity"
+                        style={inputStyle}
+                        placeholder="Daily capacity..."
+                        value={this.state.daily_capacity}
+                        onChange={this.onChange}
+                    />
+                    <input
+                        type="submit"
+                        value="Submit"
+                        style={inputStyle}
+                    />
+                </form>
+            </>
         )
     }
 }
@@ -39,5 +103,13 @@ export class AddTechnician extends Component {
 AddTechnician.propTypes = {
     addTechnician: PropTypes.func.isRequired,
 }
+
+const inputStyle = {
+    padding: "10px",
+    width: "50%",
+    margin: "5px",
+    borderRadius: "5px",
+};
+
 
 export default AddTechnician

@@ -28,7 +28,7 @@ class App extends Component {
 
   // Delete Technician
   delTechnician = (id) => {
-    this.setState({ technicians: [...this.state.technicians.filter(technician => technician.id !== technician.id)] });
+    this.setState({ technicians: [...this.state.technicians.filter(technician => technician.id !== id)] });
   }
 
   //Add Technician
@@ -57,6 +57,7 @@ class App extends Component {
                 <AddTechnician 
                   addTechnician={this.addTechnician} 
                 />
+                <h3>Actual Technicians</h3>
                 <Technicians 
                   technicians={this.state.technicians}
                   delTechnician={this.delTechnician}

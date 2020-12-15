@@ -16,7 +16,7 @@ export class Technicianitem extends Component {
         return (
             <div style={this.getStyle()}>
                 <p>
-                    Id {id} - First Name: { first_name } - Last Name: { last_name } - Email: { email } - Hour Rate: {hour_rate } - Daily Capacity: { daily_capacity }
+                    {id} - First Name: { first_name } - Last Name: { last_name } - Email: { email } - SkillsId {skillsId} - Hour Rate: {hour_rate } - Daily Capacity: { daily_capacity }
                     <button onClick={this.props.delTechnician.bind(this, id)} style={btnStyle}>x</button>
                     <button style={btnStyle}>Edit</button>
                 </p>
