@@ -1,57 +1,50 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/layouts/header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import About from './components/pages/About';
+import Technicians from './components/Technicians';
+import AddTechnician from './components/AddTechnician';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 class App extends Component {
 
   state = {
-    todos: [
-      {
-        id: uuidv4(),
-        title: 'Take out the trash',
-        completed: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Dinner with wife',
-        completed: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Meeting with boss', 
-        completed: false
-      }
-    ]
+    technicians: [],
+  };
+
+  componentDidMount() {
+    const dataTechnicians = require("./data/Technicians.json");
+    this.setState({ technicians: dataTechnicians });
   }
 
-  //Toggle Complete
+  /*//Toggle Complete
   markComplete = (id) => {
-  this.setState({ todos: this.state.todos.map(todo => {
-    if(todo.id === id) {
-      todo.completed = !todo.completed
+  this.setState({ technicians: this.state.technicians.map(technician => {
+    if(technician.id === id) {
+      technician.completed = !technician.completed
     }
-    return todo;
-  }) });
-}
-  // Delete Todo
-  delTodo = (id) => {
-    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== todo.id)] });
+    return technician;
+  }) });*/
+
+  // Delete Technician
+  delTechnician = (id) => {
+    this.setState({ technicians: [...this.state.technicians.filter(technician => technician.id !== technician.id)] });
   }
 
-  //Add Todo
-  addTodo = (title) => {
-    const newTodo = {
+  //Add Technician
+  addTechnician = (first_name, last_name, email, typeIds, skillsId, hour_rate, daily_capacity) => {
+    const newTechnician = {
       id: uuidv4(),
-      title,
-      completed: false
+      first_name,
+      last_name,
+      email,
+      typeIds,
+      skillsId,
+      hour_rate,
+      daily_capacity,
     }
-    this.setState({ todos: [...this.state.todos, newTodo]})
-  }
+    this.setState({ technicians: [...this.state.technicians, newTechnician]})
+  };
 
   render() {
     return (
@@ -61,11 +54,15 @@ class App extends Component {
             <Header />
             <Route exact path="/" render={props => (
               <React.Fragment>
-                <AddTodo addTodo={this.addTodo} />
-                <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
+                <AddTechnician 
+                  addTechnician={this.addTechnician} 
+                />
+                <Technicians 
+                  technicians={this.state.technicians}
+                  delTechnician={this.delTechnician}
+                />
               </React.Fragment>
             )} />
-            <Route path="/about" component={About} />
           </div>
         </div>
       </Router>

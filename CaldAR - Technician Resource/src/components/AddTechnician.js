@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class AddTodo extends Component {
+export class AddTechnician extends Component {
     state = {
         title: ''
     }
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.addTodo(this.state.title);
+        this.props.addTechnician(this.state.title);
         this.setState({title:''})
     }
 
@@ -19,7 +19,7 @@ export class AddTodo extends Component {
                 <input 
                 type="text" 
                 name="title" 
-                placeholder="Add Todo..."
+                placeholder="Add Technician..."
                 style={{flex: '10', padding: '5px'}}
                 value={this.state.title}
                 onChange={this.onChange}
@@ -28,7 +28,7 @@ export class AddTodo extends Component {
                 type="submit"
                 value="Submit"
                 className="btn"
-                style={{flex: '1'}}
+                style={{flex: '1', background: '#232f3e'}}
                 />
             </form>
         )
@@ -36,8 +36,8 @@ export class AddTodo extends Component {
 }
 
 // Prop types
-AddTodo.propTypes = {
-    addTodo: PropTypes.func.isRequired,
+AddTechnician.propTypes = {
+    addTechnician: PropTypes.func.isRequired,
 }
 
-export default AddTodo
+export default AddTechnician
